@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #C3D9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generadorconstancias.InicioSesionFXMLControlador">
+   <children>
+      <ImageView fitHeight="737.0" fitWidth="968.0" layoutX="-328.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/FEIUV_FondoLogin.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#004aad" layoutX="761.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar Sesión">
+         <font>
+            <Font name="System Bold" size="64.0" />
+         </font></Text>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="902.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Logo_de_la_Universidad_Veracruzana.svg.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfUsuario" layoutX="755.0" layoutY="309.0" prefHeight="51.0" prefWidth="410.0" promptText="Ingresar usuario">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Label layoutX="755.0" layoutY="274.0" text="Usuario">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="pfContrasenia" layoutX="755.0" layoutY="485.0" prefHeight="51.0" prefWidth="410.0" promptText="Ingresar contraseña">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="755.0" layoutY="450.0" text="Contraseña">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="875.0" layoutY="632.0" mnemonicParsing="false" onAction="#iniciarSesion" style="-fx-background-color: #004aad;" text="Iniciar Sesión" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="lbErrorUsuario" layoutX="755.0" layoutY="360.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbErrorContrasenia" layoutX="755.0" layoutY="536.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
