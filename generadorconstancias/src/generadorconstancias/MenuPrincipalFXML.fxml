@@ -38,6 +38,9 @@
                <image>
                   <Image url="@../Imagenes/docente.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </graphic>
          <cursor>
@@ -50,6 +53,9 @@
                <image>
                   <Image url="@../Imagenes/solicitarconstancia.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </graphic>
          <font>
@@ -64,6 +70,9 @@
                <image>
                   <Image url="@../Imagenes/historialconstancias.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </graphic>
          <font>

@@ -23,7 +23,7 @@ public class PersonalAdministrativoDAO {
         Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
         if(conexionBD != null){
             try {
-                String consulta = "SELECT * FROM Docente WHERE usuario = ? AND contrasenia = ?";
+                String consulta = "SELECT * FROM personaladministrativo WHERE usuario = ? AND contrasenia = ?";
                 
                 PreparedStatement consultaLogin = conexionBD.prepareStatement(consulta);
                 consultaLogin.setString(1, usuario);

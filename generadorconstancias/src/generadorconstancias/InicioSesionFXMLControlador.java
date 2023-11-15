@@ -50,16 +50,19 @@ public class InicioSesionFXMLControlador implements Initializable {
         try {
             if(camposValidos()){
                 Docente docenteSesion = DocenteDAO.iniciarSesion(tfUsuario.getText(), pfContrasenia.getText());
-                PersonalAdministrativo personalSesion = PersonalAdministrativoDAO.iniciarSesion(tfUsuario.getText(), pfContrasenia.getText());
+                
                 if(docenteSesion != null){
                     Utilidades.mostrarAlertaSimple("Bienvenid@", "Bienvenid@ " + docenteSesion.getNombreCompleto() + ".", AlertType.INFORMATION);
                     abrirMenuPrincipal(docenteSesion);
-                }else if(personalSesion != null){
-                    Utilidades.mostrarAlertaSimple("Bienvenid@", "Bienvenid@ " + personalSesion.getNombreCompleto() + ".", AlertType.INFORMATION);
-                    abrirMenuPrincipal(personalSesion);
                 }else{
-                    Utilidades.mostrarAlertaSimple("Usuario incorrecto", "El correo institucional y/o contraseña es incorrecto, favor de verificar", AlertType.WARNING);
-                }
+                    PersonalAdministrativo personalSesion = PersonalAdministrativoDAO.iniciarSesion(tfUsuario.getText(), pfContrasenia.getText());
+                    if(personalSesion != null){
+                        Utilidades.mostrarAlertaSimple("Bienvenid@", "Bienvenid@ " + personalSesion.getNombreCompleto() + ".", AlertType.INFORMATION);
+                        abrirMenuPrincipal(personalSesion);
+                    }else{
+                        Utilidades.mostrarAlertaSimple("Usuario incorrecto", "El correo institucional y/o contraseña es incorrecto, favor de verificar", AlertType.WARNING);
+                    }
+                }              
             }            
         } catch (SQLException | NullPointerException e) {
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salió mal: " + e.getMessage(), AlertType.ERROR);
