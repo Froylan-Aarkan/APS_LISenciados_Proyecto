@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #C3D9EA;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="generadorconstancias.administracion.DocentesFXMLControlador">
+   <children>
+      <Label contentDisplay="TOP" layoutX="353.0" layoutY="120.0" opacity="0.06" text="Sistema generador de constancias" textFill="#004aad">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="424.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/Logo_de_la_Universidad_Veracruzana.svg.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+   </children>
+</AnchorPane>

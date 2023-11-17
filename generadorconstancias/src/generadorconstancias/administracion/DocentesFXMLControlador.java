@@ -4,8 +4,11 @@
  */
 package generadorconstancias.administracion;
 
+import Modelo.POJO.PersonalAdministrativo;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -14,7 +17,8 @@ import javafx.fxml.Initializable;
  * @author johno
  */
 public class DocentesFXMLControlador implements Initializable {
-
+    private PersonalAdministrativo personalSesion;
+    
     /**
      * Initializes the controller class.
      */
@@ -23,4 +27,39 @@ public class DocentesFXMLControlador implements Initializable {
         // TODO
     }    
     
+    @FXML
+    private void registrarDocente(ActionEvent event) {
+    }
+
+    @FXML
+    private void modificarDocente(ActionEvent event) {
+    }
+
+    @FXML
+    private void consultarDocente(ActionEvent event) {
+    }
+
+    @FXML
+    private void eliminarDocente(ActionEvent event) {
+    }
+
+    @FXML
+    private void registrarTrabajo(ActionEvent event) {
+    }
+
+    @FXML
+    private void consultarSolicitudes(ActionEvent event) {
+    }
+
+    @FXML
+    private void regresar(ActionEvent event) {
+    }
+
+    @FXML
+    private void cerrarSesión(ActionEvent event) {
+    }
+ 
+    public void inicializarVentana(PersonalAdministrativo personalSesion){
+        this.personalSesion = personalSesion;
+    }
 }

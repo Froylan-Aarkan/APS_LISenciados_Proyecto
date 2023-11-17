@@ -11,25 +11,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #C3D9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generadorconstancias.MenuPrincipalFXMLControlador">
    <children>
-      <Button contentDisplay="TOP" layoutX="1116.0" layoutY="30.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: #C3D9EA;" text="Cerrar sesión" textFill="RED">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
+      <Label contentDisplay="TOP" layoutX="353.0" layoutY="120.0" opacity="0.06" text="Sistema generador de constancias" textFill="#004aad">
          <graphic>
-            <ImageView fitHeight="108.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="424.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagenes/cerrarsesion_rojo.png" />
+                  <Image url="@../Imagenes/Logo_de_la_Universidad_Veracruzana.svg.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </graphic>
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
-      </Button>
-      <Button fx:id="btnDocentes" contentDisplay="TOP" layoutX="475.0" layoutY="178.0" mnemonicParsing="false" onAction="#abrirVentanaDocentes" style="-fx-background-color: #C3D9EA;" text="Docentes" textFill="#004aad" visible="false">
+      </Label>
+      <Button fx:id="btnDocentes" contentDisplay="TOP" layoutX="161.0" layoutY="179.0" mnemonicParsing="false" onAction="#abrirVentanaDocentes" style="-fx-background-color: #C3D9EA;" text="Docentes" textFill="#004aad" visible="false">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -43,6 +37,24 @@
                </cursor>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnHistorialSolicitudes" contentDisplay="TOP" layoutX="806.0" layoutY="239.0" mnemonicParsing="false" onAction="#historialSolicitudes" style="-fx-background-color: #C3D9EA;" text="Historial de solicitudes" textFill="#004aad" visible="false">
+         <graphic>
+            <ImageView fitHeight="218.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/historialconstancias.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -64,11 +76,14 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnHistorialSolicitudes" contentDisplay="TOP" layoutX="806.0" layoutY="239.0" mnemonicParsing="false" onAction="#historialSolicitudes" style="-fx-background-color: #C3D9EA;" text="Historial de solicitudes" textFill="#004aad" visible="false">
+      <Button contentDisplay="TOP" layoutX="1116.0" layoutY="30.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: #C3D9EA;" text="Cerrar sesión" textFill="RED">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
          <graphic>
-            <ImageView fitHeight="218.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="108.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagenes/historialconstancias.png" />
+                  <Image url="@../Imagenes/cerrarsesion_rojo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -76,23 +91,23 @@
             </ImageView>
          </graphic>
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
+      </Button>
+      <Button fx:id="btnRenovarFirma" contentDisplay="TOP" layoutX="780.0" layoutY="184.0" mnemonicParsing="false" onAction="#abrirRenovarFirma" style="-fx-background-color: #C3D9EA;" text="Renovar Firma" textFill="#004aad" visible="false">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="247.0" fitWidth="389.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/renovarfirma_azul.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label contentDisplay="TOP" layoutX="353.0" layoutY="120.0" opacity="0.06" text="Sistema generador de constancias" textFill="#004aad">
-         <graphic>
-            <ImageView fitHeight="424.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Imagenes/Logo_de_la_Universidad_Veracruzana.svg.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

@@ -23,6 +23,8 @@ public class Generadorconstancias extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Iniciar Sesión");
         stage.show();
     }
 

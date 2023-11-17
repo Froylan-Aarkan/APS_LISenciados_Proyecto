@@ -6,12 +6,20 @@ package generadorconstancias;
 
 import Modelo.POJO.Docente;
 import Modelo.POJO.PersonalAdministrativo;
+import Utilidades.Utilidades;
+import generadorconstancias.administracion.DocentesFXMLControlador;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -28,6 +36,8 @@ public class MenuPrincipalFXMLControlador implements Initializable {
     private Button btnSolicitarConstancia;
     @FXML
     private Button btnHistorialSolicitudes;
+    @FXML
+    private Button btnRenovarFirma;
 
     /**
      * Initializes the controller class.
@@ -39,10 +49,37 @@ public class MenuPrincipalFXMLControlador implements Initializable {
 
     @FXML
     private void cerrarSesion(ActionEvent event) {
+        if(Utilidades.mostrarDialogoConfirmacion("Cerrar sesión", "¿Seguro que desea cerrar sesión?")){
+            try {
+                FXMLLoader loaderInicioSesion = new FXMLLoader(getClass().getResource("InicioSesionFXML.fxml"));
+                Parent inicioSesion = loaderInicioSesion.load();
+
+                Scene escenaVentanaPrincipal = new Scene(inicioSesion);
+                Stage stageInicioSesion = (Stage) btnDocentes.getScene().getWindow();
+                stageInicioSesion.setScene(escenaVentanaPrincipal);
+                stageInicioSesion.show();
+            } catch (IOException e) {
+                Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
+            }
+        }
     }
 
     @FXML
     private void abrirVentanaDocentes(ActionEvent event) {
+        try {
+            FXMLLoader loaderDocentes = new FXMLLoader(getClass().getResource("administracion/DocentesFXML.fxml"));
+            Parent docentes = loaderDocentes.load();
+            DocentesFXMLControlador controlador = loaderDocentes.getController();
+            Scene escenaDocentes = new Scene(docentes);
+            Stage stageDocentes = (Stage) btnDocentes.getScene().getWindow();
+            stageDocentes.setScene(escenaDocentes);
+            stageDocentes.setResizable(false);
+            stageDocentes.setTitle("Docentes");
+            controlador.inicializarVentana(personalSesion);
+            stageDocentes.show();
+        } catch (IOException e) {
+            Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -53,6 +90,9 @@ public class MenuPrincipalFXMLControlador implements Initializable {
     private void historialSolicitudes(ActionEvent event) {
     }
     
+    @FXML
+    private void abrirRenovarFirma(ActionEvent event) {
+    }
     
     public void iniciarVentanaDocente(Docente docenteSesion){
         btnSolicitarConstancia.setVisible(true);
@@ -62,6 +102,7 @@ public class MenuPrincipalFXMLControlador implements Initializable {
     
     public void iniciarVentanaPersonalAdministrativo(PersonalAdministrativo personalSesion){
         btnDocentes.setVisible(true);
+        btnRenovarFirma.setVisible(true);
         this.personalSesion = personalSesion;
-    }
+    }  
 }
