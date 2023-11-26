@@ -171,8 +171,7 @@ public class DocentesFXMLControlador implements Initializable {
             stageMenuPrincipal.show();
         } catch (IOException e) {
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
-        }
-        
+        }        
     }
 
     @FXML

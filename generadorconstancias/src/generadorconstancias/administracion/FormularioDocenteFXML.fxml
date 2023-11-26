@@ -9,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="1285.0" style="-fx-background-color: #C3D9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generadorconstancias.administracion.FormularioDocenteFXMLControlador">
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="1280.0" style="-fx-background-color: #C3D9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generadorconstancias.administracion.FormularioDocenteFXMLControlador">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aad" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1285.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aad" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
       <Button layoutX="48.0" layoutY="5.0" mnemonicParsing="false" onAction="#regresar" style="-fx-background-color: #004aad;">
          <cursor>
             <Cursor fx:constant="HAND" />
