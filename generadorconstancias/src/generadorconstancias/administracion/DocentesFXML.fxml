@@ -29,11 +29,11 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Text>
-      <TableView layoutX="60.0" layoutY="160.0" prefHeight="402.0" prefWidth="1160.0" style="-fx-background-color: #CCFEDA; -fx-border-color: black;">
+      <TableView fx:id="tvDocentes" layoutX="60.0" layoutY="160.0" prefHeight="402.0" prefWidth="1160.0" style="-fx-background-color: #CCFEDA; -fx-border-color: black;">
         <columns>
-          <TableColumn prefWidth="214.0" text="Número de personal" />
-          <TableColumn prefWidth="558.0" text="Nombre completo" />
-            <TableColumn prefWidth="75.0" text="Correo institucional" />
+          <TableColumn fx:id="tcNumeroPersonal" prefWidth="214.0" text="Número de personal" />
+          <TableColumn fx:id="tcNombreCompleto" prefWidth="558.0" text="Nombre completo" />
+            <TableColumn fx:id="tcCorreoInstitucional" prefWidth="75.0" text="Correo institucional" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -108,6 +108,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>

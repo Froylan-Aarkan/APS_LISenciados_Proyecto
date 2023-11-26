@@ -71,14 +71,16 @@ public class InicioSesionFXMLControlador implements Initializable {
     
     private void abrirMenuPrincipal(Docente docenteSesion){
         try {
-            FXMLLoader loaderVentanaPrincipal = new FXMLLoader(getClass().getResource("MenuPrincipalFXML.fxml"));
-            Parent ventanaPrincipal = loaderVentanaPrincipal.load();
-            MenuPrincipalFXMLControlador controladorVentanaPrincipal = loaderVentanaPrincipal.getController();
-            controladorVentanaPrincipal.iniciarVentanaDocente(docenteSesion);
-            Scene escenaVentanaPrincipal = new Scene(ventanaPrincipal);
-            Stage stageVentanaPrincipal = (Stage) tfUsuario.getScene().getWindow();
-            stageVentanaPrincipal.setScene(escenaVentanaPrincipal);
-            stageVentanaPrincipal.show();
+            FXMLLoader loaderMenuPrincipal = new FXMLLoader(getClass().getResource("MenuPrincipalFXML.fxml"));
+            Parent menuPrincipal = loaderMenuPrincipal.load();
+            MenuPrincipalFXMLControlador controladorVentanaPrincipal = loaderMenuPrincipal.getController();
+            controladorVentanaPrincipal.iniciarVentanaDocente(docenteSesion);           
+            Scene escenaMenuPrincipal = new Scene(menuPrincipal);
+            Stage stageMenuPrincipal = (Stage) tfUsuario.getScene().getWindow();
+            stageMenuPrincipal.setScene(escenaMenuPrincipal);
+            stageMenuPrincipal.setResizable(false);
+            stageMenuPrincipal.setTitle("Menú Principal");
+            stageMenuPrincipal.show();
         } catch (IOException e) {
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salió mal: " + e.getMessage(), AlertType.ERROR);
         }
@@ -86,14 +88,16 @@ public class InicioSesionFXMLControlador implements Initializable {
     
     private void abrirMenuPrincipal(PersonalAdministrativo personalSesion){
         try {
-            FXMLLoader loaderVentanaPrincipal = new FXMLLoader(getClass().getResource("MenuPrincipalFXML.fxml"));
-            Parent ventanaPrincipal = loaderVentanaPrincipal.load();
-            MenuPrincipalFXMLControlador controladorVentanaPrincipal = loaderVentanaPrincipal.getController();
-            controladorVentanaPrincipal.iniciarVentanaPersonalAdministrativo(personalSesion);
-            Scene escenaVentanaPrincipal = new Scene(ventanaPrincipal);
-            Stage stageVentanaPrincipal = (Stage) tfUsuario.getScene().getWindow();
-            stageVentanaPrincipal.setScene(escenaVentanaPrincipal);
-            stageVentanaPrincipal.show();
+            FXMLLoader loaderMenuPrincipal = new FXMLLoader(getClass().getResource("MenuPrincipalFXML.fxml"));
+            Parent menuPrincipal = loaderMenuPrincipal.load();
+            MenuPrincipalFXMLControlador controladorVentanaPrincipal = loaderMenuPrincipal.getController();
+            controladorVentanaPrincipal.iniciarVentanaPersonalAdministrativo(personalSesion);           
+            Scene escenaMenuPrincipal = new Scene(menuPrincipal);
+            Stage stageMenuPrincipal = (Stage) tfUsuario.getScene().getWindow();
+            stageMenuPrincipal.setScene(escenaMenuPrincipal);
+            stageMenuPrincipal.setResizable(false);
+            stageMenuPrincipal.setTitle("Menú Principal");
+            stageMenuPrincipal.show();
         } catch (IOException e) {
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salió mal: " + e.getMessage(), AlertType.ERROR);
         }
@@ -103,7 +107,7 @@ public class InicioSesionFXMLControlador implements Initializable {
         boolean sonValidos = true;
         
         if(tfUsuario.getText().equals("")){
-            lbErrorUsuario.setText("Debe ingresar un correo institucional.");
+            lbErrorUsuario.setText("Debe ingresar un  usuario.");
             sonValidos = false;
         }else{           
             lbErrorUsuario.setText("");
