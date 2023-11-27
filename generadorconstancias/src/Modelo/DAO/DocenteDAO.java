@@ -74,7 +74,7 @@ public class DocenteDAO {
                     docentesRegistrados.add(docenteTemporal);
                 }
             }catch(SQLException e){
-                 Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar recuperar los docentes: " + e.getMessage(), Alert.AlertType.ERROR);
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar recuperar los docentes: " + e.getMessage(), Alert.AlertType.ERROR);
             }finally{
                 conexionBD.close();
             }           
@@ -83,5 +83,130 @@ public class DocenteDAO {
         }
         
         return docentesRegistrados;
+    }
+    
+    public static boolean registrarDocente(Docente docenteNuevo) throws SQLException{
+        boolean resultadoOperacion = false;
+        Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
+        if(conexionBD != null){
+            try{
+                String sentencia = "INSERT INTO docente (noPersonal, usuario, contrasenia, nombreCompleto, correoInstitucional, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?)";
+                PreparedStatement sentenciaDocente = conexionBD.prepareStatement(sentencia);
+                sentenciaDocente.setInt(1, docenteNuevo.getNoPersonal());
+                sentenciaDocente.setString(2, docenteNuevo.getUsuario());
+                sentenciaDocente.setString(3, docenteNuevo.getContrasenia());
+                sentenciaDocente.setString(4, docenteNuevo.getNombreCompleto());
+                sentenciaDocente.setString(5, docenteNuevo.getCorreoInstitucional());
+                sentenciaDocente.setString(6, docenteNuevo.getNumeroTelefonico());
+                if(sentenciaDocente.executeUpdate() > 0){
+                    resultadoOperacion = true;
+                }
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar registrar al nuevo docente: " + e.getMessage(), Alert.AlertType.ERROR);
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexion con la base de datos.", Alert.AlertType.ERROR);
+        }
+        
+        return resultadoOperacion;
+    }
+    
+    public static boolean modificarDocente(Docente docenteModificado) throws SQLException{
+        boolean resultadoOperacion = false;
+        Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
+        if(conexionBD != null){
+            try{
+                String sentencia = "UPDATE docente SET noPersonal = ?, usuario = ?, contrasenia = ?, nombreCompleto = ?, correoInstitucional = ?, numeroTelefonico = ? WHERE idDocente = ?";
+                PreparedStatement sentenciaDocente = conexionBD.prepareStatement(sentencia);
+                sentenciaDocente.setInt(1, docenteModificado.getNoPersonal());
+                sentenciaDocente.setString(2, docenteModificado.getUsuario());
+                sentenciaDocente.setString(3, docenteModificado.getContrasenia());
+                sentenciaDocente.setString(4, docenteModificado.getNombreCompleto());
+                sentenciaDocente.setString(5, docenteModificado.getCorreoInstitucional());
+                sentenciaDocente.setString(6, docenteModificado.getNumeroTelefonico());
+                sentenciaDocente.setInt(7, docenteModificado.getIdDocente());            
+                if(sentenciaDocente.executeUpdate() > 0){
+                    resultadoOperacion = true;
+                }
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar modificar al docente: " + e.getMessage(), Alert.AlertType.ERROR);
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexion con la base de datos.", Alert.AlertType.ERROR);
+        }
+        return resultadoOperacion;
+    }
+    
+    public static boolean eliminarDocente(int idDocente) throws SQLException{
+        boolean resultadoOperacion = false;
+        Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
+        if(conexionBD != null){
+            try{
+                String sentencia = "DELETE FROM docente WHERE idDocente = ?";
+                PreparedStatement sentenciaDocente = conexionBD.prepareStatement(sentencia);
+                sentenciaDocente.setInt(1, idDocente);
+                if(sentenciaDocente.executeUpdate() > 0){
+                    resultadoOperacion = true;
+                }
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar eliminar al docente: " + e.getMessage(), Alert.AlertType.ERROR);
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexion con la base de datos.", Alert.AlertType.ERROR);
+        }
+        
+        return resultadoOperacion;
+    }
+    
+    public static int buscarIdDocentePorNoPersonal(int noPersonal) throws SQLException{
+        int idDocente = 0;
+        Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
+        if(conexionBD != null){
+            try{
+                String consulta = "SELECT idDocente FROM docente WHERE noPersonal = ?";
+                PreparedStatement consultaDocente = conexionBD.prepareStatement(consulta);
+                consultaDocente.setInt(1, noPersonal);
+                ResultSet resultadoConsulta = consultaDocente.executeQuery();                
+                if(resultadoConsulta.next()){
+                    idDocente = resultadoConsulta.getInt("idDocente");
+                }                
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar buscar al docente: " + e.getMessage(), Alert.AlertType.ERROR);
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexion con la base de datos.", Alert.AlertType.ERROR);
+        }
+        return idDocente;
+    }
+    
+    public static int buscarIdDocentePorCorreoInstitucional(String correoInstitucional) throws SQLException{
+        int idDocente = 0;
+        Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
+        if(conexionBD != null){
+            try{
+                String consulta = "SELECT idDocente FROM docente WHERE correoInstitucional = ?";
+                PreparedStatement consultaDocente = conexionBD.prepareStatement(consulta);
+                consultaDocente.setString(1, correoInstitucional);
+                ResultSet resultadoConsulta = consultaDocente.executeQuery();                
+                if(resultadoConsulta.next()){
+                    idDocente = resultadoConsulta.getInt("idDocente");
+                }                
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar buscar al docente: " + e.getMessage(), Alert.AlertType.ERROR);
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexion con la base de datos.", Alert.AlertType.ERROR);
+        }
+        return idDocente;
     }
 }

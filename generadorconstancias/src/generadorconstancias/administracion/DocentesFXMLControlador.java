@@ -132,7 +132,15 @@ public class DocentesFXMLControlador implements Initializable {
     @FXML
     private void eliminarDocente(ActionEvent event) {
         if(verificarSeleccion()){
-            
+            if(Utilidades.mostrarDialogoConfirmacion("Eliminar docente", "¿Seguro que desea eliminar al docente seleccionado?")){
+                try {
+                    if(DocenteDAO.eliminarDocente(tvDocentes.getSelectionModel().getSelectedItem().getIdDocente())){
+                        Utilidades.mostrarAlertaSimple("Docente eliminado", "Se eliminó al docente con éxito", Alert.AlertType.INFORMATION);
+                    }
+                } catch (SQLException e) {
+                    Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal: " + e.getMessage(), Alert.AlertType.ERROR);
+                }
+            }            
         }else{
             Utilidades.mostrarAlertaSimple("Docente no seleccionado", "Debe seleccionar a un docente para proceder.", Alert.AlertType.WARNING);
         }
