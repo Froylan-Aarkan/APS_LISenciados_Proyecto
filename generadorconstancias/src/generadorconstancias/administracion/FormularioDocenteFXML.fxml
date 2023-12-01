@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="apFormulario" prefHeight="670.0" prefWidth="1035.0" style="-fx-background-color: #C3D9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generadorconstancias.administracion.FormularioDocenteFXMLControlador">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aad" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1036.0" />
+      <Button layoutX="48.0" layoutY="5.0" mnemonicParsing="false" onAction="#regresar" style="-fx-background-color: #004aad;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="63.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/botonregresar_blanco.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="lbTitulo" alignment="CENTER" layoutX="218.0" layoutY="7.0" prefHeight="70.0" prefWidth="600.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="128.0" text="Nombre completo">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfNombreCompleto" layoutX="60.0" layoutY="155.0" prefHeight="39.0" prefWidth="320.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="tfNumeroPersonal" layoutX="656.0" layoutY="319.0" prefHeight="39.0" prefWidth="320.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="656.0" layoutY="292.0" text="Numero de personal">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfCorreoInstitucional" layoutX="656.0" layoutY="155.0" prefHeight="39.0" prefWidth="320.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="656.0" layoutY="128.0" text="Correo institucional">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfNumeroTelefonico" layoutX="60.0" layoutY="319.0" prefHeight="39.0" prefWidth="320.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="60.0" layoutY="292.0" text="Número telefónico">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfUsuario" layoutX="60.0" layoutY="487.0" prefHeight="39.0" prefWidth="320.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="60.0" layoutY="460.0" text="Usuario">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="pfContrasenia" layoutX="656.0" layoutY="487.0" prefHeight="39.0" prefWidth="320.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="656.0" layoutY="460.0" text="Contraseña">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbErrorNumeroPersonal" layoutX="656.0" layoutY="358.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbErrorUsuario" layoutX="60.0" layoutY="526.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbErrorNombreCompleto" layoutX="60.0" layoutY="194.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbErrorCorreoInstitucional" layoutX="656.0" layoutY="194.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbErrorNumeroTelefonico" layoutX="60.0" layoutY="358.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbErrorContrasenia" layoutX="656.0" layoutY="526.0" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnRegistrar" layoutX="60.0" layoutY="598.0" mnemonicParsing="false" onAction="#registrarDocente" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #00A651;" text="Registrar" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnCancelar" layoutX="856.0" layoutY="598.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnModificar" layoutX="60.0" layoutY="598.0" mnemonicParsing="false" onAction="#modificarDocente" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #00A651;" text="Modificar" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

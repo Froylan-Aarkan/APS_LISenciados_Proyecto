@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #C3D9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generadorconstancias.firma.RenovarFirmaFXMLControlador">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aad" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
+      <Rectangle arcWidth="5.0" fill="#00aa45" height="80.0" layoutY="640.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
+      <Label alignment="CENTER" layoutX="476.0" layoutY="5.0" text="Renovar Firma" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Button layoutX="36.0" layoutY="4.0" mnemonicParsing="false" onAction="#regresar" style="-fx-background-color: #004aad;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="63.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/botonregresar_blanco.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fx:id="ivFirma" fitHeight="300.0" fitWidth="400.0" layoutX="440.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="554.0" layoutY="524.0" mnemonicParsing="false" onAction="#subirImagen" style="-fx-background-color: #004aad;" text="Subir imagen" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="581.0" layoutY="655.0" mnemonicParsing="false" onAction="#guardarFirma" style="-fx-background-color: #058125;" text="Guardar" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="1160.0" layoutY="6.0" mnemonicParsing="false" onAction="#cerrarSesión" style="-fx-background-color: #004aad;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="58.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/cerrarsesion_blanco.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
