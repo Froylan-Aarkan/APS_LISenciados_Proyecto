@@ -8,6 +8,7 @@ import Modelo.POJO.Docente;
 import Modelo.POJO.PersonalAdministrativo;
 import Utilidades.Utilidades;
 import generadorconstancias.administracion.DocentesFXMLControlador;
+import generadorconstancias.firma.RenovarFirmaFXMLControlador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,6 +58,8 @@ public class MenuPrincipalFXMLControlador implements Initializable {
                 Scene escenaVentanaPrincipal = new Scene(inicioSesion);
                 Stage stageInicioSesion = (Stage) btnDocentes.getScene().getWindow();
                 stageInicioSesion.setScene(escenaVentanaPrincipal);
+                stageInicioSesion.setResizable(false);
+                stageInicioSesion.setTitle("Iniciar Sesión");
                 stageInicioSesion.show();
             } catch (IOException e) {
                 Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
@@ -77,7 +80,7 @@ public class MenuPrincipalFXMLControlador implements Initializable {
             stageDocentes.setTitle("Docentes");
             controlador.inicializarVentana(personalSesion);
             stageDocentes.show();
-        } catch (IOException e) {
+        }catch(IOException e){
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
         }
     }
@@ -92,6 +95,20 @@ public class MenuPrincipalFXMLControlador implements Initializable {
     
     @FXML
     private void abrirRenovarFirma(ActionEvent event) {
+        try{
+            FXMLLoader loaderFirma = new FXMLLoader(getClass().getResource("firma/RenovarFirmaFXML.fxml"));
+            Parent firma = loaderFirma.load();
+            RenovarFirmaFXMLControlador controlador = loaderFirma.getController();
+            Scene escenaFirma = new Scene(firma);
+            Stage stageFirma = (Stage) btnRenovarFirma.getScene().getWindow();
+            stageFirma.setScene(escenaFirma);
+            stageFirma.setResizable(false);
+            stageFirma.setTitle("Renovar Firma");
+            controlador.inicializarVentana(personalSesion);
+            stageFirma.show();
+        }catch(IOException e){
+            Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
+        }
     }
     
     public void iniciarVentanaDocente(Docente docenteSesion){
