@@ -11,14 +11,10 @@ import generadorconstancias.MenuPrincipalFXMLControlador;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,6 +38,7 @@ import javax.imageio.ImageIO;
 public class RenovarFirmaFXMLControlador implements Initializable {
     private PersonalAdministrativo personalSesion;
     private File archivoFirma;
+    private Image imagenPrevia;
     
     @FXML
     private ImageView ivFirma;
@@ -83,7 +80,7 @@ public class RenovarFirmaFXMLControlador implements Initializable {
         dialogoFirma.getExtensionFilters().add(filtroFirma);
         Stage stage = (Stage) ivFirma.getScene().getWindow();
         archivoFirma = dialogoFirma.showOpenDialog(stage);
-        
+               
         if(archivoFirma != null){
             try{
                 BufferedImage bufferImagen = ImageIO.read(archivoFirma);
@@ -100,16 +97,16 @@ public class RenovarFirmaFXMLControlador implements Initializable {
     private void guardarFirma(ActionEvent event) {
         //TODO validar que no sea una imagen repetida del ultimo registro
         try {
-            if(archivoFirma != null && ivFirma.getImage() != null){                
+            if(archivoFirma != null && ivFirma.getImage() != null){   
                 if(Utilidades.mostrarDialogoConfirmacion("Guardar firma", "¿Desea guardar la firma?")){
                     if(FirmaDigitalDAO.guardarFirma(archivoFirma)){
-                        Utilidades.mostrarAlertaSimple("Firma guardada", "Se guardó la firma con éxito.", Alert.AlertType.ERROR);
+                        Utilidades.mostrarAlertaSimple("Firma guardada", "Se guardó la firma con éxito.", Alert.AlertType.INFORMATION);
                     }else{
                         Utilidades.mostrarAlertaSimple("Firma no guardada", "No se logró guardar la firma.", Alert.AlertType.ERROR);
                     }
                 }else{
                     cargarFirma();
-                }
+                }            
             }else{
                 Utilidades.mostrarAlertaSimple("Firma no subida", "No se ha subido la firma a guardar.", Alert.AlertType.WARNING);
             }         
@@ -145,9 +142,11 @@ public class RenovarFirmaFXMLControlador implements Initializable {
                 lbNoFirmas.setVisible(false);
                 Image firma = new Image(new ByteArrayInputStream(bytesFirma));
                 ivFirma.setImage(firma);
+                imagenPrevia = firma;
             }else{
                 lbNoFirmas.setVisible(true);
                 archivoFirma = null;
+                imagenPrevia = null;
             }
         } catch (SQLException e) {
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
