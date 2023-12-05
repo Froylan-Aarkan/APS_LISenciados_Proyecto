@@ -8,6 +8,7 @@ import Modelo.POJO.Docente;
 import Modelo.POJO.PersonalAdministrativo;
 import Utilidades.Utilidades;
 import generadorconstancias.administracion.DocentesFXMLControlador;
+import generadorconstancias.constancias.HistorialSolicitudConstanciasFXMLControlador;
 import generadorconstancias.firma.RenovarFirmaFXMLControlador;
 import java.io.IOException;
 import java.net.URL;
@@ -91,6 +92,21 @@ public class MenuPrincipalFXMLControlador implements Initializable {
 
     @FXML
     private void historialSolicitudes(ActionEvent event) {
+        try{
+            FXMLLoader loaderConstancias = new FXMLLoader(getClass().getResource("constancias/HistorialSolicitudConstanciasFXML.fxml"));
+            Parent constancias = loaderConstancias.load();
+            HistorialSolicitudConstanciasFXMLControlador controlador = loaderConstancias.getController();
+            Scene escenaConstancias = new Scene(constancias);
+            Stage stageConstancias = (Stage) btnHistorialSolicitudes.getScene().getWindow();
+            stageConstancias.setScene(escenaConstancias);
+            stageConstancias.setResizable(false);
+            stageConstancias.setTitle("Historial de solicitudes");
+            controlador.inicializarVentana(docenteSesion);
+            stageConstancias.show();
+        }catch(IOException e){
+            Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
     }
     
     @FXML
@@ -108,7 +124,6 @@ public class MenuPrincipalFXMLControlador implements Initializable {
             stageFirma.show();
         }catch(IOException e){
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
-            e.printStackTrace();
         }
     }
     

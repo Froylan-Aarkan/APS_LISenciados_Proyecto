@@ -13,7 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javafx.scene.control.Alert;
 
 /**
@@ -49,14 +48,10 @@ public class FirmaDigitalDAO {
         Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
         if(conexionBD != null){
             try{
-                String sentencia1 = "DELETE FROM firmadigital WHERE idFirmaDigital = 1"; 
-                String sentencia2 = "INSERT INTO firmadigital (idFirmaDigital, firma) VALUES (?, ?)";
-                Statement sentenciaDelete = conexionBD.createStatement();
-                sentenciaDelete.executeUpdate(sentencia1);
+                String sentencia2 = "INSERT INTO firmadigital (firma) VALUES (?)";
                 PreparedStatement sentenciaFirma = conexionBD.prepareStatement(sentencia2);
-                sentenciaFirma.setInt(1, 1);
                 FileInputStream archivoFirma = new FileInputStream(firma);
-                sentenciaFirma.setBlob(2, archivoFirma);
+                sentenciaFirma.setBlob(1, archivoFirma);
 
                 if(sentenciaFirma.executeUpdate() > 0){
                     resultadoOperacion = true;

@@ -41,6 +41,7 @@ import javafx.stage.Stage;
 public class DocentesFXMLControlador implements Initializable {
     private ObservableList<Docente> listaDocentes;
     private PersonalAdministrativo personalSesion;
+    
     @FXML
     private TableView<Docente> tvDocentes;
     @FXML
@@ -174,8 +175,8 @@ public class DocentesFXMLControlador implements Initializable {
                     controlador.inicializarConstancias(seleccionado);
 
                     stageConstancias.showAndWait();
-                } catch (IOException ex) {
-                    Logger.getLogger(InicioSesionFXMLControlador.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException e) {
+                    Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
                 }
         }else{
             Utilidades.mostrarAlertaSimple("Docente no seleccionado", "Debe seleccionar a un docente para proceder.", Alert.AlertType.WARNING);
@@ -184,7 +185,7 @@ public class DocentesFXMLControlador implements Initializable {
 
     @FXML
     private void regresar(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loaderMenuPrincipal = new FXMLLoader(getClass().getResource("/generadorconstancias/MenuPrincipalFXML.fxml"));
             Parent menuPrincipal = loaderMenuPrincipal.load();
             MenuPrincipalFXMLControlador controlador = loaderMenuPrincipal.getController();
@@ -214,7 +215,6 @@ public class DocentesFXMLControlador implements Initializable {
                 stageInicioSesion.show();
             } catch (IOException e) {
                 Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
-                e.printStackTrace();
             }
         }
     }
@@ -229,11 +229,12 @@ public class DocentesFXMLControlador implements Initializable {
         try{
             listaDocentes = FXCollections.observableArrayList();
             ArrayList<Docente> docentesBD = DocenteDAO.recuperarDocentes();
-            listaDocentes.addAll(docentesBD);
-            tvDocentes.setItems(listaDocentes);
+            if(!docentesBD.isEmpty()){
+                listaDocentes.addAll(docentesBD);
+                tvDocentes.setItems(listaDocentes);
+            }          
         }catch(SQLException e){
             Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal: " + e.getMessage(), Alert.AlertType.ERROR);
-            e.printStackTrace();
         }
     }
     

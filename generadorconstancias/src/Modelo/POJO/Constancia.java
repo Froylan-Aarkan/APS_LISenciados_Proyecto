@@ -14,11 +14,29 @@ public class Constancia {
     private int idConstancia;
     private int docenteSolicitud;
     private int periodoSolicitud;
+    private int idFirmaDigital;
     private String descripcion;
     private String tipo;
+    private String periodo;
     private Date fechaSolicitud;
 
     public Constancia() {
+    }
+
+    public int getIdFirmaDigital() {
+        return idFirmaDigital;
+    }
+
+    public void setIdFirmaDigital(int idFirmaDigital) {
+        this.idFirmaDigital = idFirmaDigital;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     public int getIdConstancia() {

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #C3D9EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generadorconstancias.constancias.HistorialSolicitudConstanciasFXMLControlador">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#004aad" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1283.0" />
+      <Button layoutX="1158.0" layoutY="7.0" mnemonicParsing="false" onAction="#cerrarSesión" style="-fx-background-color: #004aad;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="58.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/cerrarsesion_blanco.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="38.0" layoutY="4.0" mnemonicParsing="false" onAction="#regresar" style="-fx-background-color: #004aad;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="63.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/botonregresar_blanco.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text fill="WHITE" layoutX="385.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial de solicitudes">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Text>
+      <Label contentDisplay="TOP" layoutX="354.0" layoutY="120.0" opacity="0.06" text="Sistema generador de constancias" textFill="#004aad" visible="false">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+         <graphic>
+            <ImageView disable="true" fitHeight="424.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagenes/Logo_de_la_Universidad_Veracruzana.svg.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Rectangle arcWidth="5.0" fill="#00aa45" height="80.0" layoutY="650.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1283.0" />
+      <TableView fx:id="tvConstancias" layoutX="61.0" layoutY="164.0" prefHeight="402.0" prefWidth="1160.0" style="-fx-background-color: #CCFEDA; -fx-border-color: BLACK;">
+        <columns>
+          <TableColumn fx:id="tcFecha" prefWidth="75.0" text="Fecha" />
+          <TableColumn fx:id="tcPeriodo" prefWidth="75.0" text="Periodo" />
+            <TableColumn fx:id="tcTipo" prefWidth="75.0" text="Tipo" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>
