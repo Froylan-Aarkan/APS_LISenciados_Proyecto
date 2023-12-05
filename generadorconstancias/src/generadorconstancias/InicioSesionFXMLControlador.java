@@ -60,7 +60,7 @@ public class InicioSesionFXMLControlador implements Initializable {
                         Utilidades.mostrarAlertaSimple("Bienvenid@", "Bienvenid@ " + personalSesion.getNombreCompleto() + ".", AlertType.INFORMATION);
                         abrirMenuPrincipal(personalSesion);
                     }else{
-                        Utilidades.mostrarAlertaSimple("Usuario incorrecto", "El correo institucional y/o contraseña es incorrecto, favor de verificar", AlertType.WARNING);
+                        Utilidades.mostrarAlertaSimple("Usuario incorrecto", "El usuario no se encuentra registrado o la contraseña es incorrecta, favor de verificar", AlertType.WARNING);
                     }
                 }              
             }            
