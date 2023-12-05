@@ -108,6 +108,7 @@ public class MenuPrincipalFXMLControlador implements Initializable {
             stageFirma.show();
         }catch(IOException e){
             Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
+            e.printStackTrace();
         }
     }
     
