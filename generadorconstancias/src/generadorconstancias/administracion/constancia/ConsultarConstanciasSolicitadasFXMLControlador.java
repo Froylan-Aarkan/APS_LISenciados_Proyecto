@@ -6,7 +6,14 @@ package generadorconstancias.administracion.constancia;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -15,6 +22,21 @@ import javafx.fxml.Initializable;
  */
 public class ConsultarConstanciasSolicitadasFXMLControlador implements Initializable {
 
+    @FXML
+    private TableView<?> tvConstancias;
+    @FXML
+    private Label lbDocente;
+    @FXML
+    private TableColumn<?, ?> tcFechaSolicitud;
+    @FXML
+    private TableColumn<?, ?> tcPeriodoSolicitud;
+    @FXML
+    private TableColumn<?, ?> tcTipo;
+    @FXML
+    private Button btnConsultar;
+    
+    private int idConsulta;
+
     /**
      * Initializes the controller class.
      */
@@ -22,5 +44,16 @@ public class ConsultarConstanciasSolicitadasFXMLControlador implements Initializ
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void cerrarVentana(ActionEvent event) {
+    }
+
+    @FXML
+    private void consultarConstancia(ActionEvent event) {
+    }
     
+    public void inicializarConstancias(int idDocente) {
+        idConsulta = idDocente;
+    }
 }
