@@ -51,8 +51,7 @@ public class HistorialSolicitudConstanciasFXMLControlador implements Initializab
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        configurarTabla();
-        cargarTabla();
+        
     }    
 
     @FXML
@@ -110,5 +109,7 @@ public class HistorialSolicitudConstanciasFXMLControlador implements Initializab
     
     public void inicializarVentana(Docente docenteSesion){
         this.docenteSesion = docenteSesion;
+        configurarTabla();
+        cargarTabla();
     }
 }
