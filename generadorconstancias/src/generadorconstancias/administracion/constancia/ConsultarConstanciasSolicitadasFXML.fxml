@@ -46,7 +46,6 @@
       <TableView fx:id="tvConstancias" layoutX="114.0" layoutY="230.0" prefHeight="395.0" prefWidth="1060.0" style="-fx-background-color: #CCFEDA; -fx-border-color: #000000;">
         <columns>
           <TableColumn fx:id="tcFechaSolicitud" prefWidth="75.0" text="Fecha de solicitud" />
-          <TableColumn fx:id="tcPeriodoSolicitud" prefWidth="75.0" text="Periodo de solicitud" />
             <TableColumn fx:id="tcTipo" prefWidth="75.0" text="Tipo" />
         </columns>
          <columnResizePolicy>

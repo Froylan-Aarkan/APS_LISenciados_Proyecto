@@ -6,6 +6,10 @@ package Modelo.DAO;
 
 import Modelo.ConexionBaseDatos;
 import Modelo.POJO.Constancia;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import Modelo.POJO.Periodo;
 import Utilidades.Utilidades;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

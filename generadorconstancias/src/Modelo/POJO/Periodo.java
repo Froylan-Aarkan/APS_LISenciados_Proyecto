@@ -50,4 +50,11 @@ public class Periodo {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
+
+    @Override
+    public String toString() {
+        return periodo + ": " + fechaInicio.getDate() + " - " + fechaFin.getDate();
+    }
+    
+    
 }

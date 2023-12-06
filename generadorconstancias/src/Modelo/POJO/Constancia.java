@@ -19,6 +19,7 @@ public class Constancia {
     private String tipo;
     private String periodo;
     private Date fechaSolicitud;
+    private int idPeriodo;
 
     public Constancia() {
     }
@@ -86,4 +87,13 @@ public class Constancia {
     public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }    
+    
+    public int getIdPeriodo() {
+        return idPeriodo;
+    }
+
+    public void setIdPeriodo(int idPeriodo) {
+        this.idPeriodo = idPeriodo;
+    }
+    
 }
