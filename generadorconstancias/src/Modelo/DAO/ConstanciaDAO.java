@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javafx.scene.control.Alert;
 
@@ -52,5 +55,33 @@ public class ConstanciaDAO {
         }
         
         return constanciasDocente;
+    }
+    
+    public static boolean registrarConstancia(Constancia constanciaNueva) throws SQLException{
+        boolean resultadoOperacion = false;
+        Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
+        if(conexionBD != null){
+            try{
+                String sentencia = "INSERT INTO constancia (docenteSolicitud, fechaSolicitud, descripcion, tipo, idPeriodo) VALUES (?, ?, 'constancia', ?, 1)";
+                PreparedStatement sentenciaDocente = conexionBD.prepareStatement(sentencia);
+                sentenciaDocente.setInt(1, constanciaNueva.getDocenteSolicitud());
+                sentenciaDocente.setDate(2, constanciaNueva.getFechaSolicitud());
+               // sentenciaDocente.setString(3, constanciaNueva.getDescripcion());
+                sentenciaDocente.setString(3, constanciaNueva.getTipo());
+                //sentenciaDocente.setInt(5, constanciaNueva.getIdFirmaDigital());
+                //sentenciaDocente.setInt(6, constanciaNueva.getPeriodoSolicitud());
+                if(sentenciaDocente.executeUpdate() > 0){
+                    resultadoOperacion = true;
+                }
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar registrar la nueva constancia: " + e.getMessage(), Alert.AlertType.ERROR);
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexion con la base de datos.", Alert.AlertType.ERROR);
+        }
+        
+        return resultadoOperacion;
     }
 }
