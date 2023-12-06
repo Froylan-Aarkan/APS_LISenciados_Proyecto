@@ -9,7 +9,9 @@ import Modelo.DAO.ConstanciaDAO;
 import Modelo.POJO.Constancia;
 import Modelo.POJO.Docente;
 import Modelo.POJO.Periodo;
+import Modelo.POJO.PersonalAdministrativo;
 import Utilidades.Utilidades;
+import generadorconstancias.administracion.DocentesFXMLControlador;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -57,6 +59,12 @@ public class ConsultarConstanciasSolicitadasFXMLControlador implements Initializ
     public ObservableList<Constancia> listaConstancias;
     
     public ObservableList<Periodo> listaPeriodos;
+    
+    private PersonalAdministrativo personalSesion;
+    
+    private String nombreCompletoDocente;
+    @FXML
+    private TableColumn<Constancia, String> tcPeriodo;
     /**
      * Initializes the controller class.
      */
@@ -68,17 +76,21 @@ public class ConsultarConstanciasSolicitadasFXMLControlador implements Initializ
 
     @FXML
     private void cerrarVentana(ActionEvent event) {
+        if(Utilidades.mostrarDialogoConfirmacion("Regresar", "¿Seguro que desea cancelar la operación y volver a la ventana anterior?")){
+            Stage stage = (Stage) btnConsultar.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
-    private void consultarConstancia(ActionEvent event) throws IOException {
+    private void consultarConstancia(ActionEvent event) throws IOException, SQLException {
         if(!tvConstancias.getSelectionModel().isEmpty()){
             Constancia constanciaConsulta = verificarConstanciaSeleccionado();
             Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
             if(conexionBD != null){
                 if(constanciaConsulta != null){
                     if(Utilidades.mostrarDialogoConfirmacion("Consultar constancia","¿Deseas consultar la información de esta constancia?")){
-                        FXMLLoader loaderVentanaConsultarConstancias = new FXMLLoader(getClass().getResource("administracion/constancia/ConsultarConstanciaFXML.fxml"));
+                        FXMLLoader loaderVentanaConsultarConstancias = new FXMLLoader(getClass().getResource("ConsultarConstanciaFXML.fxml"));
                         Parent ventanaConsultarConstancias = loaderVentanaConsultarConstancias.load();
                        
 
@@ -86,17 +98,15 @@ public class ConsultarConstanciasSolicitadasFXMLControlador implements Initializ
                         Stage stageConstancias = new Stage();
                         stageConstancias.setScene(escenarioConstancias);
                         stageConstancias.initModality(Modality.APPLICATION_MODAL);
-
+                        
                         ConsultarConstanciaFXMLControlador controlador = (ConsultarConstanciaFXMLControlador) loaderVentanaConsultarConstancias.getController();
-                        //controlador.inicializarConstancia(constanciaConsulta);
+                        controlador.inicializarConstancia(constanciaConsulta, nombreCompletoDocente);
 
                         stageConstancias.showAndWait();
                     }
                 }
             }else{
-                Utilidades.mostrarAlertaSimple("Error de conexion",
-                        "No hay conexión con la base de datos.",
-                        Alert.AlertType.ERROR);
+                Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexión con la base de datos.", Alert.AlertType.ERROR);
             }
         }else{
             Utilidades.mostrarAlertaSimple("Seleccion obligatoria", "Necesita seleccionar una constancia a consultar", Alert.AlertType.WARNING);
@@ -107,15 +117,17 @@ public class ConsultarConstanciasSolicitadasFXMLControlador implements Initializ
         return filaSeleccionada >= 0 ? listaConstancias.get(filaSeleccionada) : null;
     }
     
-    public void inicializarConstancias(int idDocente) {
+    public void inicializarConstancias(int idDocente, String nombreCompleto) {
         idConsulta = idDocente;
-        //lbDocente.setText(docenteSeleccion.getNombreCompleto());
+        nombreCompletoDocente = nombreCompleto;
+        lbDocente.setText(nombreCompletoDocente);
         cargarDatosTabla();
     }
     
     private void configurarTabla(){
         tcFechaSolicitud.setCellValueFactory(new PropertyValueFactory ("fechaSolicitud"));
         tcTipo.setCellValueFactory(new PropertyValueFactory("tipo"));
+        tcPeriodo.setCellValueFactory(new PropertyValueFactory("periodo"));
     }
     
     private void cargarDatosTabla(){
@@ -131,5 +143,9 @@ public class ConsultarConstanciasSolicitadasFXMLControlador implements Initializ
         }catch(SQLException | NullPointerException e){
             Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal: " + e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+    
+    public void inicializarVentana(PersonalAdministrativo personalSesion){
+        this.personalSesion = personalSesion;
     }
 }

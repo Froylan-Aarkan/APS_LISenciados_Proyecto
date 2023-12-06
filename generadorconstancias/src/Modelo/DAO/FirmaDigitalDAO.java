@@ -67,4 +67,29 @@ public class FirmaDigitalDAO {
         
         return resultadoOperacion;
     }
+    
+    public static byte[] recuperarFirmaPorIdFirma(int idFirma) throws SQLException{
+        byte[] firma = null;
+        Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
+        if(conexionBD != null){
+            try{
+                String consulta = "SELECT fd.firma FROM firmadigital fd WHERE idFirmaDigital = ?";
+                PreparedStatement consultaPeriodo = conexionBD.prepareStatement(consulta);
+                consultaPeriodo.setInt(1, idFirma);
+                ResultSet resultadoConsulta = consultaPeriodo.executeQuery();
+                
+                if(resultadoConsulta.next()){
+                    firma = resultadoConsulta.getBytes("firma");
+                }
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "Algo ocurrió mal al intentar recuperar la firma: " + e.getMessage(), Alert.AlertType.ERROR);
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error de conexion", "No hay conexion con la base de datos.", Alert.AlertType.ERROR);
+        }
+        
+        return firma;
+    }
 }

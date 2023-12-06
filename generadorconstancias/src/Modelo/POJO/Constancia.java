@@ -19,9 +19,17 @@ public class Constancia {
     private String tipo;
     private String periodo;
     private Date fechaSolicitud;
-    private int idPeriodo;
+    private byte[] firma;
 
     public Constancia() {
+    }
+
+    public byte[] getFirma() {
+        return firma;
+    }
+
+    public void setFirma(byte[] firma) {
+        this.firma = firma;
     }
 
     public int getIdFirmaDigital() {
@@ -87,13 +95,5 @@ public class Constancia {
     public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }    
-    
-    public int getIdPeriodo() {
-        return idPeriodo;
-    }
-
-    public void setIdPeriodo(int idPeriodo) {
-        this.idPeriodo = idPeriodo;
-    }
     
 }

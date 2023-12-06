@@ -11,6 +11,7 @@ import Utilidades.Utilidades;
 import generadorconstancias.InicioSesionFXMLControlador;
 import generadorconstancias.MenuPrincipalFXMLControlador;
 import generadorconstancias.administracion.constancia.ConsultarConstanciasSolicitadasFXMLControlador;
+import generadorconstancias.administracion.trabajo.AsignarTrabajoFXMLControlador;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -149,9 +150,25 @@ public class DocentesFXMLControlador implements Initializable {
     }
 
     @FXML
-    private void registrarTrabajo(ActionEvent event) {
+    private void registrarTrabajo(ActionEvent event) throws SQLException {
         if(verificarSeleccion()){
-            
+            try {
+                int seleccionId = tvDocentes.getSelectionModel().getSelectedItem().getIdDocente();
+                String seleccionNombre = tvDocentes.getSelectionModel().getSelectedItem().getNombreCompleto();
+                FXMLLoader loaderVentanaAsignarTrabajos = new FXMLLoader(getClass().getResource("trabajo/AsignarTrabajoFXML.fxml"));
+                Parent ventanaAsignarTrabajo = loaderVentanaAsignarTrabajos.load();
+
+                Scene escenarioAsignarTrabajos = new Scene(ventanaAsignarTrabajo);
+                Stage stageTrabajos = new Stage();
+                stageTrabajos.setScene(escenarioAsignarTrabajos);
+                stageTrabajos.initModality(Modality.APPLICATION_MODAL);
+                AsignarTrabajoFXMLControlador controlador = (AsignarTrabajoFXMLControlador) loaderVentanaAsignarTrabajos.getController();
+                controlador.inicializarTrabajos(seleccionId, seleccionNombre);
+
+                stageTrabajos.showAndWait();
+            } catch (IOException e) {
+                Utilidades.mostrarAlertaSimple("Algo salió mal", "Algo salio mal: " + e.getMessage() + ".", Alert.AlertType.ERROR);
+            }
         }else{
             Utilidades.mostrarAlertaSimple("Docente no seleccionado", "Debe seleccionar a un docente para proceder.", Alert.AlertType.WARNING);
         }
@@ -161,8 +178,8 @@ public class DocentesFXMLControlador implements Initializable {
     private void consultarSolicitudes(ActionEvent event) {
         if(verificarSeleccion()){
             try {
-                    int seleccionado = tvDocentes.getSelectionModel().getSelectedItem().getIdDocente();
-                    System.out.println(seleccionado);
+                    int seleccionId = tvDocentes.getSelectionModel().getSelectedItem().getIdDocente();
+                    String seleccionNombre = tvDocentes.getSelectionModel().getSelectedItem().getNombreCompleto();
                     FXMLLoader loaderVentanaConsultarConstancias = new FXMLLoader(getClass().getResource("constancia/ConsultarConstanciasSolicitadasFXML.fxml"));
                     Parent ventanaConsultarConstancias = loaderVentanaConsultarConstancias.load();
 
@@ -172,7 +189,7 @@ public class DocentesFXMLControlador implements Initializable {
                     stageConstancias.initModality(Modality.APPLICATION_MODAL);
 
                     ConsultarConstanciasSolicitadasFXMLControlador controlador = (ConsultarConstanciasSolicitadasFXMLControlador) loaderVentanaConsultarConstancias.getController();
-                    controlador.inicializarConstancias(seleccionado);
+                    controlador.inicializarConstancias(seleccionId, seleccionNombre);
 
                     stageConstancias.showAndWait();
                 } catch (IOException e) {

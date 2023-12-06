@@ -44,6 +44,7 @@ public class ConstanciaDAO {
                     constanciaTemporal.setTipo(resultadoConsulta.getString("tipo"));
                     constanciaTemporal.setDescripcion(resultadoConsulta.getString("descripcion"));
                     constanciaTemporal.setPeriodo(PeriodoDAO.recuperarPeriodoPorIdPeriodo(resultadoConsulta.getInt("idPeriodo")));
+                    constanciaTemporal.setFirma(FirmaDigitalDAO.recuperarFirmaPorIdFirma(resultadoConsulta.getInt("idFirmaDigital")));
                     constanciasDocente.add(constanciaTemporal);
                 }
             }catch(SQLException e){

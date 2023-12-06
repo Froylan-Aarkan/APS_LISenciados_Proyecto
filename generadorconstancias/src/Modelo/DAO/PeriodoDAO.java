@@ -22,7 +22,7 @@ public class PeriodoDAO {
         Connection conexionBD = ConexionBaseDatos.abrirConexionBaseDatos();
         if(conexionBD != null){
             try{
-                String consulta = "SELECT periodo FROM periodo WHERE idPeriodo = ?";
+                String consulta = "SELECT p.periodo FROM periodo p WHERE idPeriodo = ?";
                 PreparedStatement consultaPeriodo = conexionBD.prepareStatement(consulta);
                 consultaPeriodo.setInt(1, idPeriodo);
                 ResultSet resultadoConsulta = consultaPeriodo.executeQuery();
